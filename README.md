@@ -148,6 +148,7 @@ Behavior:
 ---
 
 ## 🧠 Data Flow
+
                 ┌────────────────────────────┐
                 │        Web Browser         │
                 │ (MediaStream + JavaScript) │
@@ -161,42 +162,44 @@ Behavior:
               │        Django Views        │
               │     (app2/views.py)        │
               └────────────┬───────────────┘
-                             │
-                             ▼
+                           │
+                           ▼
            Image preprocessing with OpenCV / DeepFace
-                             │
-                             ▼
+                           │
+                           ▼
               ┌────────────────────────────┐
               │     Face Embedding Engine  │
               │  (Facenet model via DeepFace) │
               └────────────┬───────────────┘
-                             │
+                           │
              Compare embeddings with registered profiles
-                             │
-                ┌────────────┴────────────┐
-                │                         │
-                ▼                         ▼
+                           │
+                ┌──────────┴────────────┐
+                │                       │
+                ▼                       ▼
         ✅ Match Found             ❌ Unknown Face
         ─────────────             ─────────────
   Log entry/exit event        Store image in UnknownFaces/
   Update PostgreSQL DB        Play alarm.wav alert
   Generate VisitLog CSV       Notify admin if needed
-                │
-                ▼
+                    │
+                    ▼
        ┌────────────────────────────┐
        │        Django Models       │
        │  (Person, LoggingLog)      │
        └────────────┬───────────────┘
-                             │
-                             ▼
+                    │
+                    ▼
             PostgreSQL / SQLite Database
-                             │
-                             ▼
+                    │
+                    ▼
        ┌────────────────────────────┐
        │       Admin Dashboard      │
        │ (templates/dashboard.html) │
        └────────────────────────────┘
+       
 ---
+
 
 ## Data & Security Notes 🔐
 
@@ -246,6 +249,7 @@ Behavior:
 
 ---
 ## 📂 Repository Structure  
+```
 Face-Pulse-AI/
 │
 ├── main2/                                   # Django Project Folder
@@ -291,5 +295,5 @@ Face-Pulse-AI/
 ## License 📝
 
 This project is licensed under the **MIT License**.  
-See the [LICENSE](LICENSE) file for full details.
+
 
