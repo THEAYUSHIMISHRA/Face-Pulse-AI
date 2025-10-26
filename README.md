@@ -1,14 +1,13 @@
-```markdown
 # Face-Pulse-AI
 
-🧠🚆 FacePulse — Face Recognition System for Server Room  
-A web-based, contactless in-time / out-time logging and monitoring system using DeepFace (Facenet), Django and PostgreSQL.
+🧠🚆 **FacePulse — Face Recognition System for Server Room**  
+A web-based, contactless in-time / out-time logging and monitoring system using DeepFace (Facenet), Django, and PostgreSQL.
 
-Project report submitted as a part of Summer Internship/Training at RDSO (Research Designs and Standards Organisation), Ministry of Railways, Government of India.
+Project report submitted as part of Summer Internship/Training at **RDSO (Research Designs and Standards Organisation), Ministry of Railways, Government of India**.
 
 ---
 
-## Project overview 📘
+## Project Overview 📘
 
 FacePulse is a prototype biometric logging system that:
 
@@ -22,33 +21,34 @@ The system is intended for secure areas such as server rooms where contactless, 
 
 ---
 
-## Problem statement / Challenges faced ❗
+## Problem Statement / Challenges Faced ❗
 
 Organizations relying on traditional logging or access-control methods (manual registers, RFID cards, or legacy scanners) face several practical problems:
 
-- ✍️ Manual dependency — paper registers are error-prone, hard to audit and enable impersonation.  
-- ⌛ Time inefficiency — card swipes / manual entries add delay and create queues for high-traffic areas.  
-- 🔒 Tamper & security risk — physical tokens/cards can be lost, shared, or cloned; paper records can be altered.  
-- 📉 Poor scalability & integration — legacy systems rarely integrate with centralized analytics or cloud services.  
-- 🌙 Environmental & hygiene constraints — fingerprint scanners require contact; in pandemic contexts contactless is preferred.  
-- 🧩 Deployment complexity — installing and maintaining dedicated hardware across many locations increases cost and operational overhead.
+- ✍️ **Manual dependency** — paper registers are error-prone, hard to audit, and enable impersonation.  
+- ⌛ **Time inefficiency** — card swipes or manual entries add delays and create queues for high-traffic areas.  
+- 🔒 **Tamper & security risk** — physical tokens/cards can be lost, shared, or cloned; paper records can be altered.  
+- 📉 **Poor scalability & integration** — legacy systems rarely integrate with centralized analytics or cloud services.  
+- 🌙 **Environmental & hygiene constraints** — fingerprint scanners require contact; in pandemic contexts, contactless is preferred.  
+- 🧩 **Deployment complexity** — installing and maintaining dedicated hardware across many locations increases cost and operational overhead.
 
-These issues motivated the design of a contactless, centralized, and auditable logging solution that reduces human error and operational friction.
+These challenges motivated the design of a contactless, centralized, and auditable logging solution that reduces human error and operational friction.
 
 ---
 
-## Proposed solution 💡
+## Proposed Solution 💡
 
 FacePulse — a web-accessible, FaceNet-based recognition and logging system — addresses the problems above with the following approach:
 
-- Contactless authentication: users register once (image or webcam) and can authenticate via browser webcam (MediaStream API), eliminating physical tokens.  
-- Embedding-based identity: FaceNet embeddings (via DeepFace) represent users as compact vectors stored server-side; matching uses cosine/Euclidean distance for reliable verification.  
-- Automated logging: Entry and exit timestamps are recorded automatically; durations are computed and stored for analytics.  
-- Centralized datastore: PostgreSQL (recommended for production) stores user metadata and logs, enabling reporting and audits.  
-- Minimal hardware footprint: runs on standard web browsers with webcam support — avoids expensive fingerprint or card infrastructure.  
-- Security-first design: server-side matching, HTTPS transport, RBAC-ready admin views, and support for encryption/retention policies.
+- **Contactless authentication**: Users register once (image or webcam) and can authenticate via browser webcam, eliminating physical tokens.  
+- **Embedding-based identity**: FaceNet embeddings (via DeepFace) represent users as compact vectors stored server-side; matching uses cosine/Euclidean distance for reliable verification.  
+- **Automated logging**: Entry and exit timestamps are recorded automatically; durations are computed and stored for analytics.  
+- **Centralized datastore**: PostgreSQL (recommended for production) stores user metadata and logs, enabling reporting and audits.  
+- **Minimal hardware footprint**: Runs on standard web browsers with webcam support — avoids expensive fingerprint or card infrastructure.  
+- **Security-first design**: Server-side matching, HTTPS transport, RBAC-ready admin views, and support for encryption/retention policies.
 
-Benefits:
+**Benefits:**
+
 - Faster check-ins and check-outs, reduced queues  
 - Better auditability and tamper resistance  
 - Easier scalability and integration with dashboards and analytics  
@@ -56,7 +56,7 @@ Benefits:
 
 ---
 
-## Key features ✅
+## Key Features ✅
 
 | Feature | Description |
 |---|---|
@@ -64,18 +64,18 @@ Benefits:
 | 📷 Real-time recognition | Browser webcam capture via MediaStream → server-side DeepFace matching |
 | 📏 Matching metrics | Cosine similarity / Euclidean distance thresholding for identity verification |
 | 📝 Automated logging | Automatic entry/exit timestamps and duration calculation per session |
-| 🖥️ Web UI | Lightweight HTML5/JS templates for registration, recognition and admin |
+| 🖥️ Web UI | Lightweight HTML5/JS templates for registration, recognition, and admin |
 | 🧩 Modular backend | Django models/views/helpers for easy extension and reporting |
 
 ---
 
-## Tech stack 🧩
+## Tech Stack 🧩
 
 | Component | Technology | Notes |
-|---:|---|---|
+|---|---|---|
 | Backend | Django (Python) | MVT architecture, ORM, admin |
 | Face recognition | DeepFace (Facenet) | Embedding generation & verification |
-| Image processing | OpenCV, NumPy, Pillow | Preprocessing, decoding and resizing |
+| Image processing | OpenCV, NumPy, Pillow | Preprocessing, decoding, resizing |
 | ML Backend | TensorFlow / Keras | DeepFace model runtime |
 | DB (dev) | SQLite | Lightweight local testing |
 | DB (prod) | PostgreSQL | Recommended for production concurrency |
@@ -84,7 +84,7 @@ Benefits:
 
 ---
 
-## Quick setup (development) 🛠️
+## Quick Setup (Development) 🛠️
 
 ### Prerequisites
 
@@ -92,107 +92,205 @@ Benefits:
 |---|---|---|
 | Python | Runtime | 3.8+ (match TF/DeepFace compatibility) |
 | pip | Package installer | Latest |
-| virtualenv / venv | Isolate deps | Recommended |
+| virtualenv / venv | Isolate dependencies | Recommended |
 | Git | Version control | — |
 | (Prod) PostgreSQL | Production DB | Optional for dev |
 | (Prod) TLS | Camera access over HTTPS | Required in production |
 
-### Basic steps (summary)
+### Basic Steps
 
 | Step | Command / Action |
-|---:|---|
-| Clone repo | git clone <repo-url> |
-| Create venv | python -m venv venv |
-| Activate venv | source venv/bin/activate (Windows: venv\Scripts\activate) |
-| Install deps | pip install -r requirements.txt |
+|---|---|
+| Clone repo | `git clone <repo-url>` |
+| Create venv | `python -m venv venv` |
+| Activate venv | `source venv/bin/activate` (Windows: `venv\Scripts\activate`) |
+| Install dependencies | `pip install -r requirements.txt` |
 | Configure env | Copy `.env.example` → `.env`, set DB and MEDIA paths |
-| Migrate DB | python manage.py migrate |
-| Create admin | python manage.py createsuperuser |
-| Start server | python manage.py runserver |
+| Migrate DB | `python manage.py migrate` |
+| Create admin | `python manage.py createsuperuser` |
+| Start server | `python manage.py runserver` |
 
-Important notes:
-- 🔒 Browsers require secure origins for camera access — serve over HTTPS in production. Localhost often allowed for testing.
-- ⚙️ dlib/TensorFlow/OpenCV installs can be OS-sensitive — consult OS-specific guides or prebuilt wheels.
+> 🔒 Browsers require secure origins for camera access — serve over HTTPS in production. Localhost often allowed for testing.  
+> ⚙️ dlib/TensorFlow/OpenCV installs can be OS-sensitive — consult OS-specific guides or prebuilt wheels.
 
 ---
 
 ## Usage ▶️
 
-| Page | Endpoint | Action |
-|---|---:|
-| Registration | `/register/` | Upload image or capture webcam → embedding generated & saved |
-| Recognition | `/recognize/` | Capture snapshot → compare embeddings → log entry/exit |
-| Admin | `/admin/` | Manage users, logs, export reports |
+| Page         | Endpoint      | Action                                                 |
+| ------------ | ------------- | ------------------------------------------------------ |
+| Registration | `/register/`  | Upload image or capture webcam → embedding saved       |
+| Recognition  | `/recognize/` | Capture snapshot → compare embeddings → log entry/exit |
+| Admin        | `/admin/`     | Manage users, logs, export reports                     |
+
 
 Behavior:
-- If no active session → record entry_time ⏱️  
-- If active session exists → record exit_time, calculate duration, mark session complete ✅
+
+- If no active session → record **entry_time** ⏱️  
+- If active session exists → record **exit_time**, calculate duration, mark session complete ✅
 
 ---
 
-## Project structure (high level) 📁
+## Project Structure (High Level) 📁
 
-| Path | Purpose |
-|---|---|
-| manage.py | Django project management |
-| myproject/ | Django settings, URL routing, WSGI/ASGI |
-| my_app/ | App logic: models.py, views.py, forms, templates, word_helpers.py |
-| my_app/templates/ | data_entry.html, download_doc.html UI templates |
-| my_app/word_helpers.py | Utilities for .docx generation |
-| media/ | Uploaded images and generated documents |
-| static/ | Static assets: logos, css, js |
-| requirements.txt | Pinned Python packages |
+| Path                     | Purpose                                                           |
+| ------------------------ | ----------------------------------------------------------------- |
+| `manage.py`              | Django project management                                         |
+| `myproject/`             | Settings, URL routing, WSGI/ASGI                                  |
+| `my_app/`                | App logic: `models.py`, `views.py`, `forms.py`, `word_helpers.py` |
+| `my_app/templates/`      | UI templates (`data_entry.html`, `download_doc.html`)             |
+| `my_app/word_helpers.py` | Utilities for `.docx` generation                                  |
+| `media/`                 | Uploaded images & generated documents                             |
+| `static/`                | Static assets: logos, CSS, JS                                     |
+| `requirements.txt`       | Python packages                                                   |
 
----
-
-## Data & security notes 🔐
-
-| Concern | Recommendation |
-|---|---|
-| Storage | Store embeddings (vectors) instead of raw images where possible; keep images in protected media with restricted filesystem permissions |
-| Transmission | Always use HTTPS in production |
-| Encryption | Use DB/disk encryption or encrypt embeddings (Fernet/AES) for sensitive deployments |
-| Access control | RBAC for admin and reporting features |
-| Privacy / Retention | Implement deletion/retention policies and consent flows as required by regulations |
 
 ---
 
-## Results & evaluation (summary) 📈
-
-| Metric | Observed / Recommendation |
-|---|---|
-| Recognition accuracy | High with Facenet in controlled tests; real-world varies with lighting/camera |
-| Avg inference time | ≈ 180 ms/frame on tested dev hardware |
-| FAR / FRR | Depends on dataset; tune thresholds per deployment |
-| Deployment notes | Cache/load model on startup; preprocess images for low-light improvements |
+## 🧠 Data Flow
+                ┌────────────────────────────┐
+                │        Web Browser         │
+                │ (MediaStream + JavaScript) │
+                └────────────┬───────────────┘
+                             │
+                             ▼
+              Capture user face via webcam
+                             │
+                             ▼
+              ┌────────────────────────────┐
+              │        Django Views        │
+              │     (app2/views.py)        │
+              └────────────┬───────────────┘
+                             │
+                             ▼
+           Image preprocessing with OpenCV / DeepFace
+                             │
+                             ▼
+              ┌────────────────────────────┐
+              │     Face Embedding Engine  │
+              │  (Facenet model via DeepFace) │
+              └────────────┬───────────────┘
+                             │
+             Compare embeddings with registered profiles
+                             │
+                ┌────────────┴────────────┐
+                │                         │
+                ▼                         ▼
+        ✅ Match Found             ❌ Unknown Face
+        ─────────────             ─────────────
+  Log entry/exit event        Store image in UnknownFaces/
+  Update PostgreSQL DB        Play alarm.wav alert
+  Generate VisitLog CSV       Notify admin if needed
+                │
+                ▼
+       ┌────────────────────────────┐
+       │        Django Models       │
+       │  (Person, LoggingLog)      │
+       └────────────┬───────────────┘
+                             │
+                             ▼
+            PostgreSQL / SQLite Database
+                             │
+                             ▼
+       ┌────────────────────────────┐
+       │       Admin Dashboard      │
+       │ (templates/dashboard.html) │
+       └────────────────────────────┘
 
 ---
 
-## Known issues & limitations ⚠️
+## Data & Security Notes 🔐
 
-| Issue | Impact | Mitigation |
-|---|---|---|
-| Dependency complexity | Installation failures on some OS/envs | Use pinned wheels, document OS-specific steps, provide requirements.txt |
-| Low-light / occlusion | Degraded recognition | Improve preprocessing, use better cameras or IR illumination |
-| Spoofing risk | Photos/videos may be used to spoof | Add liveness detection in future |
-| UI is minimal | Admin/analytics UX limited | Implement dashboard & charts in future iterations |
+| Concern        | Recommendation                                               |
+| -------------- | ------------------------------------------------------------ |
+| Storage        | Store embeddings instead of raw images; protect media folder |
+| Transmission   | Always use HTTPS                                             |
+| Encryption     | DB/disk encryption or encrypt embeddings (Fernet/AES)        |
+| Access control | RBAC for admin & reporting features                          |
+| Privacy        | Implement retention/deletion policies & consent flows        |
 
 ---
 
-## Future enhancements 🚀
+## Results & Evaluation (Summary) 📈
 
-| Feature | Benefit | Priority |
-|---|---|---:|
-| Mobile app (Flutter/React Native) | Field / on-the-go check-ins | Medium |
-| Liveness detection | Prevent spoof attacks | High |
-| Analytics dashboard | Visualize peaks, durations, export reports | Medium |
-| Multi-org & RBAC | Serve multiple departments / orgs | Medium |
-| Biometric encryption | Stronger data protection | High |
+| Metric               | Observed / Recommendation                                    |
+| -------------------- | ------------------------------------------------------------ |
+| Recognition accuracy | High in controlled tests; varies in real-world lighting      |
+| Avg inference time   | ≈ 180 ms/frame (dev hardware)                                |
+| FAR / FRR            | Tune thresholds per deployment                               |
+| Deployment notes     | Cache/load model on startup; preprocess images for low-light |
 
+---
+
+## Known Issues & Limitations ⚠️
+
+| Issue                 | Impact                                | Mitigation                                                   |
+| --------------------- | ------------------------------------- | ------------------------------------------------------------ |
+| Dependency complexity | Installation failures on some OS/envs | Use pinned wheels & requirements.txt                         |
+| Low-light / occlusion | Degraded recognition                  | Improve preprocessing, use better cameras or IR illumination |
+| Spoofing risk         | Photos/videos may spoof system        | Add liveness detection in future                             |
+| Minimal UI            | Admin/analytics UX limited            | Implement dashboard & charts                                 |
+
+
+---
+
+## Future Enhancements 🚀
+
+| Feature                           | Benefit                          | Priority |
+| --------------------------------- | -------------------------------- | -------- |
+| Mobile app (Flutter/React Native) | On-the-go check-ins              | Medium   |
+| Liveness detection                | Prevent spoof attacks            | High     |
+| Analytics dashboard               | Visualize peaks & export reports | Medium   |
+| Multi-org & RBAC                  | Serve multiple departments/orgs  | Medium   |
+| Biometric encryption              | Stronger data protection         | High     |
+
+
+---
+## 📂 Repository Structure  
+Face-Pulse-AI/
+│
+├── main2/                                   # Django Project Folder
+│   ├── app2/                                # Main Application
+│   │   ├── migrations/
+│   │   │   └── __init__.py
+│   │   ├── admin.py
+│   │   ├── alarm.wav                        # Alert sound for unknown face
+│   │   ├── apps.py
+│   │   ├── cyber_bg.png                     # Background image (UI asset)
+│   │   ├── face_attendance.py               # Core facial recognition logic
+│   │   ├── forms.py                         # Django forms
+│   │   ├── models.py                        # Database models
+│   │   ├── tests.py
+│   │   ├── urls.py
+│   │   └── views.py
+│   │
+│   ├── ImagesAttendance/                    # Folder storing attendance snapshots
+│   ├── UnknownFaces/                        # Stores unidentified captures
+│   ├── main2/                               # Django Core (Project Settings)
+│   │   ├── __init__.py
+│   │   ├── asgi.py
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   └── wsgi.py
+│   │
+│   ├── media/                               # Uploaded images or data files
+│   ├── static/                              # CSS, JS, and static assets
+│   ├── templates/                           # HTML templates
+│   │   ├── index.html
+│   │   ├── dashboard.html
+│   │   └── login.html
+│   │
+│   ├── db.sqlite3                           # Database file (development)
+│   ├── manage.py                            # Django management script
+│   └── VisitLog_2025-07-24.csv              # Sample attendance log export
+│
+├── LICENSE
+├── README.md
 
 ---
 
 ## License 📝
 
-This repository does not include a license file by default. Add an appropriate license (e.g., MIT) if you wish to allow reuse. If needed, include a `LICENSE` file.
-```
+This project is licensed under the **MIT License**.  
+See the [LICENSE](LICENSE) file for full details.
+
