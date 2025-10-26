@@ -196,7 +196,6 @@ Behavior:
        │       Admin Dashboard      │
        │ (templates/dashboard.html) │
        └────────────────────────────┘
-
 ---
 
 ## Data & Security Notes 🔐
