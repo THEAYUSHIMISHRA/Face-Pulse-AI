@@ -11,7 +11,6 @@ Developed using Django, DeepFace (Facenet), and PostgreSQL, the system integrate
 🎯 Problem Statement
 
 Manual or card-based access systems often suffer from:
-
 ⚙️ Human errors and impersonation risks
 
 🕒 Time-consuming registration and logging
